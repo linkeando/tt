@@ -1,0 +1,28 @@
+paths:
+  /robots/curp:
+    post:
+      summary: Buscar CURP y descargar documento
+      description: |
+        Este endpoint permite buscar la Clave Única de Registro de Población (CURP). Una vez encontrada, se genera y devuelve el documento correspondiente para su descarga.
+      tags:
+        - Robots
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                curp:
+                  type: string
+                  description: "Clave Única de Registro de Población (CURP)."
+                  example: "NALE010526HCSNPDA6"
+      responses:
+        '200':
+          description: OK
+          content:
+            application/pdf:
+              schema:
+                type: string
+                format: binary
+                description: "Documento de la CURP generado en formato PDF."
